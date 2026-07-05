@@ -30,4 +30,24 @@ public class SigningRequestController {
         }
         return service.findAll().stream().map(SigningRequestResponse::from).toList();
     }
+
+    @GetMapping("/{id}")
+    public SigningRequestResponse findById(@PathVariable Long id) {
+        return SigningRequestResponse.from(service.findById(id));
+    }
+
+    @PostMapping("/{id}/approve")
+    public SigningRequestResponse approve(@PathVariable Long id) {
+        return SigningRequestResponse.from(service.approve(id));
+    }
+
+    @PostMapping("/{id}/reject")
+    public SigningRequestResponse reject(@PathVariable Long id) {
+        return SigningRequestResponse.from(service.reject(id));
+    }
+
+    @PostMapping("/{id}/sign")
+    public SigningRequestResponse sign(@PathVariable Long id) {
+        return SigningRequestResponse.from(service.sign(id));
+    }
 }
